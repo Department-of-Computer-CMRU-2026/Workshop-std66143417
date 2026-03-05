@@ -3,11 +3,12 @@ import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import os from 'os';
 
-// หา IP ของเครื่องอัตโนมัติ
+// ฟังก์ชันหา IP address ของเครื่องอัตโนมัติ
 function getLocalIPAddress() {
     const interfaces = os.networkInterfaces();
     for (const name of Object.keys(interfaces)) {
         for (const iface of interfaces[name]) {
+            // ข้าม internal (127.0.0.1) และ non-IPv4 addresses
             if (iface.family === 'IPv4' && !iface.internal) {
                 return iface.address;
             }
@@ -31,12 +32,13 @@ export default defineConfig({
         host: '0.0.0.0',
         port: 5173,
         strictPort: true,
-        cors: true,
-        watch: {
-            ignored: ['**/storage/framework/views/**'],
+        cors: {
+            origin: '*',
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+            allowedHeaders: ['Content-Type', 'Authorization'],
         },
         hmr: {
-            host: localIP,
+            host: localIP, // หา IP อัตโนมัติจาก network interface
             port: 5173,
         },
     },
