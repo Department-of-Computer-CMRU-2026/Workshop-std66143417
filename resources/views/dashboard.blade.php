@@ -221,6 +221,9 @@
         <div class="navbar-nav">
             <a href="{{ route('home') }}" class="nav-link">หน้าหลัก</a>
             <a href="{{ route('dashboard') }}" class="nav-link nav-active">Dashboard</a>
+            @can('admin')
+                <a href="{{ route('admin.events.index') }}" class="nav-link" style="color: var(--gold); font-weight: 700;">จัดการกิจกรรม</a>
+            @endcan
             <form method="POST" action="{{ route('logout') }}" style="display:inline;">
                 @csrf
                 <button type="submit" class="nav-link nav-link-btn">ออกจากระบบ</button>

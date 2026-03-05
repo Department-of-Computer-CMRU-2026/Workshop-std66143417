@@ -594,6 +594,9 @@
         </a>
         <div class="navbar-nav">
             @auth
+                @can('admin')
+                    <a href="{{ route('admin.events.index') }}" class="nav-link" style="color: var(--gold); font-weight: 700; margin-right: 15px;">จัดการกิจกรรม</a>
+                @endcan
                 <div class="nav-user">
                     <div class="user-avatar">{{ auth()->user()->initials() }}</div>
                     <span class="user-name">{{ auth()->user()->name }}</span>

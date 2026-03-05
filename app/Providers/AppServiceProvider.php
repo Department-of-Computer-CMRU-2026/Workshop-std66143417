@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+    //
     }
 
     /**
@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+
+        \Illuminate\Support\Facades\Gate::define('admin', function (\App\Models\User $user) {
+            return $user->isAdmin();
+        });
     }
 
     /**
@@ -31,20 +35,20 @@ class AppServiceProvider extends ServiceProvider
      */
     protected function configureDefaults(): void
     {
-        Date::use(CarbonImmutable::class);
+        Date::use (CarbonImmutable::class);
 
         DB::prohibitDestructiveCommands(
             app()->isProduction(),
         );
 
-        Password::defaults(fn (): ?Password => app()->isProduction()
-            ? Password::min(12)
-                ->mixedCase()
-                ->letters()
-                ->numbers()
-                ->symbols()
-                ->uncompromised()
-            : null,
+        Password::defaults(fn(): ?Password => app()->isProduction()
+        ?Password::min(12)
+        ->mixedCase()
+        ->letters()
+        ->numbers()
+        ->symbols()
+        ->uncompromised()
+        : null,
         );
     }
 }
