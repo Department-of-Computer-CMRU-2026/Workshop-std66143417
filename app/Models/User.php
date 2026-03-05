@@ -4,7 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Relations\HasMany;
+=======
+>>>>>>> 1df37db256d9068ed25ea4a04075fa430c840c6b
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -24,7 +27,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
         'role',
+=======
+>>>>>>> 1df37db256d9068ed25ea4a04075fa430c840c6b
     ];
 
     /**
@@ -60,6 +66,7 @@ class User extends Authenticatable
         return Str::of($this->name)
             ->explode(' ')
             ->take(2)
+<<<<<<< HEAD
             ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
@@ -73,4 +80,9 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
+=======
+            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->implode('');
+    }
+>>>>>>> 1df37db256d9068ed25ea4a04075fa430c840c6b
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
@@ -19,6 +20,13 @@ function getLocalIPAddress() {
 
 const localIP = getLocalIPAddress();
 console.log('🚀 Vite HMR running on:', localIP);
+=======
+import {
+    defineConfig
+} from 'vite';
+import laravel from 'laravel-vite-plugin';
+import tailwindcss from "@tailwindcss/vite";
+>>>>>>> 1df37db256d9068ed25ea4a04075fa430c840c6b
 
 export default defineConfig({
     plugins: [
@@ -29,6 +37,7 @@ export default defineConfig({
         tailwindcss(),
     ],
     server: {
+<<<<<<< HEAD
         host: '0.0.0.0',
         port: 5173,
         strictPort: true,
@@ -43,3 +52,11 @@ export default defineConfig({
         },
     },
 });
+=======
+        cors: true,
+        watch: {
+            ignored: ['**/storage/framework/views/**'],
+        },
+    },
+});
+>>>>>>> 1df37db256d9068ed25ea4a04075fa430c840c6b

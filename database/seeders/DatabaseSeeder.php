@@ -3,8 +3,13 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+<<<<<<< HEAD
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+=======
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+>>>>>>> 1df37db256d9068ed25ea4a04075fa430c840c6b
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         // Create admin user
         User::factory()->create([
             'name' => 'Admin',
@@ -30,5 +36,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(EventSeeder::class);
+=======
+        // User::factory(10)->create();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
+>>>>>>> 1df37db256d9068ed25ea4a04075fa430c840c6b
     }
 }
