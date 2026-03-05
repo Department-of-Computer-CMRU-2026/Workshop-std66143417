@@ -54,11 +54,19 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
-        // Check if there are registrations before deleting? 
-        // Or just let cascade delete handle it if configured?
-        // Let's just delete it.
+        // ลบ registration ก่อน
+        $event->registrations()->delete();
+
+        // ลบ event
         $event->delete();
 
-        return redirect()->route('admin.events.index')->with('success', 'ลบกิจกรรมสำเร็จ');
+        return redirect()->route('admin.events.index')
+            ->with('success', 'ลบกิจกรรมเรียบร้อยแล้ว');
+    }
+
+    public function show(Event $event)
+    {
+        $event->load('registrations.user');
+        return view('admin.events.show', compact('event'));
     }
 }

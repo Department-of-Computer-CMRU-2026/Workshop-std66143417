@@ -221,6 +221,7 @@
                         </td>
                         <td>
                             <div class="actions">
+                                <a href="{{ route('admin.events.show', $event) }}" class="btn-edit" style="color: var(--success); margin-right: 8px;">ผู้ลงทะเบียน</a>
                                 <a href="{{ route('admin.events.edit', $event) }}" class="btn-edit">แก้ไข</a>
                                 <form action="{{ route('admin.events.destroy', $event) }}" method="POST" onsubmit="return confirm('ยืนยันการลบกิจกรรมนี้? ข้อมูลการลงทะเบียนจะถูกลบไปด้วย')">
                                     @csrf
